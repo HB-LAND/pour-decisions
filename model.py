@@ -96,8 +96,8 @@ class CommunityPair(db.Model):
                                  primary_key=True,
                                  autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    wine_id = db.Column(db.Integer, db.ForeignKey(wines.'wine_id'))
-    cheese_id = db.Column(db.Integer, db.ForeignKey(cheeses.'cheese_id'))
+    wine_id = db.Column(db.Integer, db.ForeignKey(wines.wine_id))
+    cheese_id = db.Column(db.Integer, db.ForeignKey(cheeses.cheese_id))
 
     user_relationship = db.relationship('User')
     wine_relationship = db.relationship('Wine')
@@ -106,8 +106,6 @@ class CommunityPair(db.Model):
     def __repr__(self):
         return f'Community Pair communitypair_id={self.communitypair_id} user_id={self.user_id}'
 
-
-class
 
 
 class Rating(db.Model):
@@ -118,8 +116,8 @@ class Rating(db.Model):
     rating_id = db.Column(db.Integer,
                           primary_key=True,
                           autoincrement=True)
-    pairtype_id = db.Column(db.String, db.ForeignKey('pair_types.pairtype_id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    pairtype_id = db.Column(db.String, db.ForeignKey(pair_types.pairtype_id))
+    user_id = db.Column(db.Integer, db.ForeignKey(users.user_id))
     pair_rating = db.Column(db.Integer)
     user_made_pair = db.Column(db.Boolean, nullable=False)
 
@@ -148,4 +146,4 @@ if __name__ == '__main__':
     # query it executes.
 
     connect_to_db(app)
-    db.create_all()
+    # db.create_all()

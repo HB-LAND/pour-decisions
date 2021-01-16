@@ -1,7 +1,7 @@
 """Server for pour-decisions app."""
 
 from flask import (Flask, render_template, request, session, jsonify)
-from model import connect_to_db
+# from model import connect_to_db
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ app = Flask(__name__)
 def my_index():
     """Rendering landing page for pour-decisions app"""
 
-    return render_template("base.html")
+    return render_template("index.html")
 
 
 if __name__ == '__main__':
