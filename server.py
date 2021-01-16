@@ -7,7 +7,11 @@ app = Flask(__name__)
 
 #============================     PAGE ROUTES    ==================================#
 
-#landing page
+@app.route("/")
+def my_index():
+    """Rendering landing page for pour-decisions app"""
+
+    return render_template("base.html")
 
 
 if __name__ == '__main__':
