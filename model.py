@@ -67,47 +67,25 @@ class Cheese(db.Model):
         return f'<Cheese Information cheese_id={self.cheese_id} cheese_name={self.cheese_name}>'
 
 
-class UserPair(db.Model):
+class Pair(db.Model):
     """A user's created paired wine and cheese."""
 
-    __tablename__ = "user_pairs"
+    __tablename__ = "pairs"
 
-    userpair_id = db.Column(db.Integer,
+    pair_id = db.Column(db.Integer,
                             primary_key=True,
                             autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     wine_id = db.Column(db.Integer, db.ForeignKey('wines.wine_id'))
     cheese_id = db.Column(db.Integer, db.ForeignKey('cheeses.cheese_id'))
+    user_made = db.Column(db.Boolean, nullable=False)
 
     user_relationship = db.relationship('User')
     wine_relationship = db.relationship('Wine')
     cheese_relationship = db.relationship('Cheese')
 
     def __repr__(self):
-        return f'UserPair userpair_id={self.userpair_id} user_id={self.user_id}'
-
-
-class CommunityPair(db.Model):
-    """An already established cheese and wine pairing that can be seen viewed/accessed by users."""
-
-    __tablename__ = "community_pairs"
-
-    communitypair_id = db.Column(db.Integer,
-                                 primary_key=True,
-                                 autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    wine_id = db.Column(db.Integer, db.ForeignKey('wines.wine_id'))
-    cheese_id = db.Column(db.Integer, db.ForeignKey('cheeses.cheese_id'))
-
-    user_relationship = db.relationship('User')
-    wine_relationship = db.relationship('Wine')
-    cheese_relationship = db.relationship('Cheese')
-
-    def __repr__(self):
-        return f'Community Pair communitypair_id={self.communitypair_id} user_id={self.user_id}'
-
-
-class
+        return f'Pair userpair_id={self.pair_id} user_id={self.user_id}'
 
 
 class Rating(db.Model):
@@ -118,10 +96,9 @@ class Rating(db.Model):
     rating_id = db.Column(db.Integer,
                           primary_key=True,
                           autoincrement=True)
-    pairtype_id = db.Column(db.String, db.ForeignKey('pair_types.pairtype_id'))
+    pair_id = db.Column(db.String, db.ForeignKey('pairs.pair_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     pair_rating = db.Column(db.Integer)
-    user_made_pair = db.Column(db.Boolean, nullable=False)
 
     user_relationship = db.relationship('User')
 
