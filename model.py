@@ -96,8 +96,8 @@ class CommunityPair(db.Model):
                                  primary_key=True,
                                  autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    wine_id = db.Column(db.Integer, db.ForeignKey(wines.'wine_id'))
-    cheese_id = db.Column(db.Integer, db.ForeignKey(cheeses.'cheese_id'))
+    wine_id = db.Column(db.Integer, db.ForeignKey('wines.wine_id'))
+    cheese_id = db.Column(db.Integer, db.ForeignKey('cheeses.cheese_id'))
 
     user_relationship = db.relationship('User')
     wine_relationship = db.relationship('Wine')
