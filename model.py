@@ -68,7 +68,7 @@ class Cheese(db.Model):
 
 
 class Pair(db.Model):
-    """A user's created paired wine and cheese."""
+    """A pairing of wine and cheese."""
 
     __tablename__ = "pairs"
 
