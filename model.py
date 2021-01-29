@@ -73,8 +73,8 @@ class Pair(db.Model):
     __tablename__ = "pairs"
 
     pair_id = db.Column(db.Integer,
-                            primary_key=True,
-                            autoincrement=True)
+                        primary_key=True,
+                        autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     wine_id = db.Column(db.Integer, db.ForeignKey('wines.wine_id'))
     cheese_id = db.Column(db.Integer, db.ForeignKey('cheeses.cheese_id'))
