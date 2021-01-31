@@ -53,6 +53,7 @@ class Cheese(db.Model):
                           primary_key=True,
                           autoincrement=True,)
     cheese_name = db.Column(db.String, nullable=False)
+    cheese_pronunciation = db.Column(db.String)
     cheese_img = db.Column(db.String)
     cheese_region = db.Column(db.String, nullable=False)
     cheese_description = db.Column(db.Text, nullable=False)
