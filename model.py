@@ -55,11 +55,15 @@ class Cheese(db.Model):
     cheese_name = db.Column(db.String, nullable=False)
     cheese_pronunciation = db.Column(db.String)
     cheese_img = db.Column(db.String)
-    cheese_region = db.Column(db.String, nullable=False)
-    cheese_description = db.Column(db.Text, nullable=False)
+    # made nullable. not all cheeses have region listed
+    cheese_region = db.Column(db.String)
+    # L - made desc nullable. not all cheeses have one!
+    cheese_description = db.Column(db.Text)
     cheese_bio = db.Column(db.Text, nullable=False)
     cheese_animal = db.Column(db.String)
-    cheese_density = db.Column(db.String, nullable=False)
+    # L - made density nullable. not all cheeses have this info
+    cheese_density = db.Column(db.String)
+    cheese_substitue = db.Column(db.String)
 
     userpair_relationship = db.relationship('UserPair')
     communitypair_relationship = db.relationship('CommunityPair')
