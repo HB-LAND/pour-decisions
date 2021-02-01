@@ -20,7 +20,7 @@ os.system("createdb pourdecisions")
 # once that's done, we connect
 connect_to_db(server.app)
 # and create our model classes inside the db
-# db.create_all()
+db.create_all()
 
 # conn = psycopg2.connect("host=localhost dbname=pourdecisions user=postgres")
 # cur = conn.cursor()
@@ -38,26 +38,32 @@ connect_to_db(server.app)
 # conn.commit()
 
 # populate cheeses table from csv
-# cheese_file = open("cheese.csv", "r")
+cheese_file = open("cheese.csv", "r")
 # next(cheese_file)
 
-# for row in cheese_data:
-#     fields = row.split(",") 
+for row in cheese_file:
+    fields = row.split("|") 
+    # for field in fields:
+    #     if field == None:
+    #         field = " "
 
-#     cheese_name, cheese_pronunciation, cheese_region, cheese_density, cheese_description, cheese_bio, cheese_animal, cheese_img, cheese_sub = fields
+    cheese_name, cheese_pronunciation, cheese_region, cheese_density, cheese_description, cheese_bio, cheese_animal, cheese_img, cheese_sub = fields
 
-#     crud.create_cheese(cheese_name, cheese_pronunciation, cheese_region, cheese_density, 
-#                         cheese_description, cheese_bio, cheese_animal, cheese_img, 
-#                         cheese_sub)
+    crud.create_cheese(cheese_name, cheese_pronunciation, cheese_region, cheese_density, 
+                        cheese_description, cheese_bio, cheese_animal, cheese_img, 
+                        cheese_sub)
     
-# cheese_file.close()
+cheese_file.close()
 
 
-cheese_data = pd.read_csv("cheese.csv")
+# # reads csv file and saves as pandas dataframe
+# cheese_data = pd.read_csv("cheese.csv")
 
-cheese_data.columns = cheese_data.iloc[0]
-cheese_data = cheese_data[1:]
-# skip first row, which is headers
-# next(cheese_data)
+# # sets column names to first row of data
+# cheese_data.columns = cheese_data.iloc[0]
 
-cheese_data.to_sql('cheeses', engine)
+# # takes slice of all data after first row
+# cheese_data = cheese_data[1:]
+
+# # dumps data into table
+# cheese_data.to_sql('cheeses', engine)
