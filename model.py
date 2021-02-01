@@ -53,22 +53,22 @@ class Cheese(db.Model):
     """A cheese."""
 
     __tablename__ = "cheeses"
-
-    cheese_id = db.Column(db.Integer,
-                          primary_key=True,
-                          autoincrement=True,)
+    
     cheese_name = db.Column(db.String, nullable=False)
     cheese_pronunciation = db.Column(db.String)
-    cheese_img = db.Column(db.String)
-    # made nullable. not all cheeses have region listed
+     # made nullable. not all cheeses have region listed
     cheese_region = db.Column(db.String)
-    # L - made desc nullable. not all cheeses have one!
+     # L - made density nullable. not all cheeses have this info
+    cheese_density = db.Column(db.String)
     cheese_description = db.Column(db.Text)
     cheese_bio = db.Column(db.Text, nullable=False)
     cheese_animal = db.Column(db.String)
-    # L - made density nullable. not all cheeses have this info
-    cheese_density = db.Column(db.String)
+    cheese_img = db.Column(db.String)
+    # L - made desc nullable. not all cheeses have one!
     cheese_sub = db.Column(db.String)
+    cheese_id = db.Column(db.Integer,
+                          primary_key=True,
+                          autoincrement=True,)
 
     userpair_relationship = db.relationship('UserPair')
     communitypair_relationship = db.relationship('CommunityPair')
@@ -106,7 +106,7 @@ class Rating(db.Model):
     rating_id = db.Column(db.Integer,
                           primary_key=True,
                           autoincrement=True)
-    pair_id = db.Column(db.String, db.ForeignKey('pairs.pair_id'))
+    pair_id = db.Column(db.Integer, db.ForeignKey('pairs.pair_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     pair_rating = db.Column(db.Integer)
 
@@ -118,7 +118,7 @@ class Rating(db.Model):
 
 def connect_to_db(app):
     # Configure to use our PostgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///pour-decisions'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///pourdecisions'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)

@@ -30,11 +30,16 @@ def create_wine(wine_name, wine_color, wine_region, wine_bio, wine_img):
     return wine
 
 
-def create_cheese(cheese_name, cheese_img, cheese_region, cheese_description, cheese_bio, cheese_animal, cheese_density):
+def create_cheese(cheese_name, cheese_pronunciation, cheese_region, cheese_density, 
+                    cheese_description, cheese_bio, cheese_animal, cheese_img, 
+                    cheese_sub):
     """Create and return a cheese."""
 
-    cheese = Cheese(cheese_name=cheese_name, cheese_img=cheese_img, cheese_region=cheese_region, cheese_description=cheese_description, cheese_bio=cheese_bio,
-                    cheese_animal=cheese_animal, cheese_density=cheese_density)
+    cheese = Cheese(cheese_name=cheese_name, cheese_pronunciation=cheese_pronunciation, 
+                    cheese_region=cheese_region, cheese_density=cheese_density, 
+                    cheese_description=cheese_description, cheese_bio=cheese_bio,
+                    cheese_animal=cheese_animal, cheese_img=cheese_img, 
+                    cheese_sub=cheese_sub)
 
     db.session.add(cheese)
     db.session.commit()
