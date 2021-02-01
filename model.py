@@ -28,14 +28,19 @@ class Wine(db.Model):
 
     __tablename__ = "wines"
 
+    # make everything but name and bio nullable to include beer and sangria
     wine_id = db.Column(db.Integer,
                         primary_key=True,
                         autoincrement=True)
     wine_name = db.Column(db.String, nullable=False)
-    wine_color = db.Column(db.String, nullable=False)
+    wine_pronunciation = db.Column(db.String)
+    wine_color = db.Column(db.String)
+    wine_sparkling = db.Column(db.Boolean, nullable=False)
     wine_region = db.Column(db.String, nullable=False)
+    wine_country = db.Column(db.String, nullable=False)
     wine_bio = db.Column(db.Text, nullable=False)
     wine_img = db.Column(db.String)
+    wine_sub = db.Column(db.String)
 
     userpair_relationship = db.relationship('UserPair')
     communitypair_relationship = db.relationship('CommunityPair')
@@ -63,7 +68,7 @@ class Cheese(db.Model):
     cheese_animal = db.Column(db.String)
     # L - made density nullable. not all cheeses have this info
     cheese_density = db.Column(db.String)
-    cheese_substitue = db.Column(db.String)
+    cheese_sub = db.Column(db.String)
 
     userpair_relationship = db.relationship('UserPair')
     communitypair_relationship = db.relationship('CommunityPair')
