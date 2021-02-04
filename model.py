@@ -15,8 +15,11 @@ class User(db.Model):
     email = db.Column(db.String(50), unique=True, nullable=False,)
     password = db.Column(db.String, nullable=False)
 
-    userpair_relationship = db.relationship('UserPair')
-    communitypair_relationship = db.relationship('CommunityPair')
+    # userpair_relationship = db.relationship('UserPair')
+    # communitypair_relationship = db.relationship('CommunityPair')
+    # I don't know what the 2 lines above are doing, since we don't have models
+    # by those names
+    pair_relationship = db.relationship('Pair')
     rating_relationship = db.relationship('Rating')
 
     def __repr__(self):
@@ -35,15 +38,16 @@ class Wine(db.Model):
     wine_name = db.Column(db.String, nullable=False)
     wine_pronunciation = db.Column(db.String)
     wine_color = db.Column(db.String)
-    wine_sparkling = db.Column(db.Boolean, nullable=False)
-    wine_region = db.Column(db.String, nullable=False)
-    wine_country = db.Column(db.String, nullable=False)
+    wine_sparkling = db.Column(db.Boolean)
+    wine_region = db.Column(db.String)
+    wine_country = db.Column(db.String)
     wine_bio = db.Column(db.Text, nullable=False)
     wine_img = db.Column(db.String)
     wine_sub = db.Column(db.String)
 
-    userpair_relationship = db.relationship('UserPair')
-    communitypair_relationship = db.relationship('CommunityPair')
+    # userpair_relationship = db.relationship('UserPair')
+    # communitypair_relationship = db.relationship('CommunityPair')
+    pair_relationship = db.relationship('Pair')
 
     def __repr__(self):
         return f'<Wine Information wine_id={self.wine_id} wine_name={self.wine_name}>'
@@ -70,8 +74,9 @@ class Cheese(db.Model):
                           primary_key=True,
                           autoincrement=True,)
 
-    userpair_relationship = db.relationship('UserPair')
-    communitypair_relationship = db.relationship('CommunityPair')
+    # userpair_relationship = db.relationship('UserPair')
+    # communitypair_relationship = db.relationship('CommunityPair')
+    pair_relationship = db.relationship('Pair')
 
     def __repr__(self):
         return f'<Cheese Information cheese_id={self.cheese_id} cheese_name={self.cheese_name}>'
@@ -95,7 +100,7 @@ class Pair(db.Model):
     cheese_relationship = db.relationship('Cheese')
 
     def __repr__(self):
-        return f'Pair userpair_id={self.pair_id} user_id={self.user_id}'
+        return f'Pair pair_id={self.pair_id} user_id={self.user_id}'
 
 
 class Rating(db.Model):

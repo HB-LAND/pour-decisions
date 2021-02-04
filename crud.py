@@ -15,14 +15,19 @@ def create_user(fname, lname, email, password):
     return user
 
 
-def create_wine(wine_name, wine_color, wine_region, wine_bio, wine_img):
+def create_wine(wine_name, wine_pronunciation, wine_color, wine_sparkling, 
+                wine_region, wine_country, wine_bio, wine_img, wine_sub):
     """Create and return a wine."""
 
     wine = Wine(wine_name=wine_name,
+                wine_pronunciation=wine_pronunciation,
                 wine_color=wine_color,
+                wine_sparkling=wine_sparkling,
                 wine_region=wine_region,
+                wine_country=wine_country,
                 wine_bio=wine_bio,
-                wine_img=wine_img)
+                wine_img=wine_img,
+                wine_sub=wine_sub)
 
     db.session.add(wine)
     db.session.commit()
