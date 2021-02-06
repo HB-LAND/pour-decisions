@@ -52,13 +52,12 @@ def create_cheese(cheese_name, cheese_pronunciation, cheese_region, cheese_densi
     return cheese
 
 
-def create_pair(user_id, wine_id, cheese_id, user_made):
+def create_pair(user_id, wine_id, cheese_id):
     """Creates a paired wine and cheese based on a user's selection"""
 
     pair = Pair(user_id=user_id,
                 wine_id=wine_id,
-                cheese_id=cheese_id,
-                user_made=user_made)
+                cheese_id=cheese_id)
 
     db.session.add(pair)
     db.session.commit()

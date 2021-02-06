@@ -29,8 +29,8 @@ next(cheese_file)
 for row in cheese_file:
     fields = row.split("|") 
     for field in fields:
-        if field == None:
-            field = NULL
+        if field == "":
+            field = None
 
     cheese_name, cheese_pronunciation, cheese_region, cheese_density, cheese_description, cheese_bio, cheese_animal, cheese_img, cheese_sub = fields
 
@@ -68,6 +68,18 @@ wine_file.close()
 crud.create_user("Your", "Mom", "fetaoffdead@no.com", "1234007")
 
 # populate pairs table
+pairs_file = open("pairs.csv", "r")
+next(pairs_file)
+
+for row in pairs_file:
+    fields = row.split(",") 
+
+    cheese_id, wine_id, user_id = fields
+
+    crud.create_pair(cheese_id=cheese_id, wine_id=wine_id, user_id=user_id )
+    
+pairs_file.close()
+
 
 
 
