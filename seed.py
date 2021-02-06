@@ -81,8 +81,6 @@ for row in pairs_file:
 pairs_file.close()
 
 
-
-
 #################### Other solutions I didn't use ###################
 
 # # reads csv file and saves as pandas dataframe
