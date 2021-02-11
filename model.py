@@ -1,6 +1,7 @@
 """Models for wine and cheese app."""
 
 from flask_sqlalchemy import SQLAlchemy
+import crud
 
 db = SQLAlchemy()
 
