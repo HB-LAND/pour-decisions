@@ -15,14 +15,19 @@ def create_user(fname, lname, email, password):
     return user
 
 
-def create_wine(wine_name, wine_color, wine_region, wine_bio, wine_img):
+def create_wine(wine_name, wine_pronunciation, wine_color, wine_sparkling, 
+                wine_region, wine_country, wine_bio, wine_img, wine_sub):
     """Create and return a wine."""
 
     wine = Wine(wine_name=wine_name,
+                wine_pronunciation=wine_pronunciation,
                 wine_color=wine_color,
+                wine_sparkling=wine_sparkling,
                 wine_region=wine_region,
+                wine_country=wine_country,
                 wine_bio=wine_bio,
-                wine_img=wine_img)
+                wine_img=wine_img,
+                wine_sub=wine_sub)
 
     db.session.add(wine)
     db.session.commit()
@@ -30,11 +35,16 @@ def create_wine(wine_name, wine_color, wine_region, wine_bio, wine_img):
     return wine
 
 
-def create_cheese(cheese_name, cheese_img, cheese_region, cheese_description, cheese_bio, cheese_animal, cheese_density):
+def create_cheese(cheese_name, cheese_pronunciation, cheese_region, cheese_density, 
+                    cheese_description, cheese_bio, cheese_animal, cheese_img, 
+                    cheese_sub):
     """Create and return a cheese."""
 
-    cheese = Cheese(cheese_name=cheese_name,              cheese_img=cheese_img,                cheese_region=cheese_region, cheese_description=cheese_description, cheese_bio=cheese_bio,
-                    cheese_animal=cheese_animal, cheese_density=cheese_density)
+    cheese = Cheese(cheese_name=cheese_name, cheese_pronunciation=cheese_pronunciation, 
+                    cheese_region=cheese_region, cheese_density=cheese_density, 
+                    cheese_description=cheese_description, cheese_bio=cheese_bio,
+                    cheese_animal=cheese_animal, cheese_img=cheese_img, 
+                    cheese_sub=cheese_sub)
 
     db.session.add(cheese)
     db.session.commit()
@@ -42,13 +52,12 @@ def create_cheese(cheese_name, cheese_img, cheese_region, cheese_description, ch
     return cheese
 
 
-def create_pair(user_id, wine_id, cheese_id, user_made):
+def create_pair(user_id, wine_id, cheese_id):
     """Creates a paired wine and cheese based on a user's selection"""
 
     pair = Pair(user_id=user_id,
                 wine_id=wine_id,
-                cheese_id=cheese_id,
-                user_made=user_made)
+                cheese_id=cheese_id)
 
     db.session.add(pair)
     db.session.commit()
